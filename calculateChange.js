@@ -8,6 +8,7 @@ const calculateChange = function(total, cash) {
 
   const coinValues = [2000, 1000, 500, 200, 100, 25, 10, 5, 1];
 
+  /* first thought
   let amount = [];
 
   for(let i = 0; i < coinValues.length; i++) {
@@ -20,7 +21,21 @@ const calculateChange = function(total, cash) {
       bills[coinTypes[j]] = amount[j];
     }
   }
+
   return bills;
+  */
+  let amount; // second thought, simplify
+
+  for(let i = 0; i < coinValues.length; i++) {
+    amount = Math.floor(change/coinValues[i]);
+    if (amount > 0) {
+      bills[coinTypes[i]] = amount;
+      change = change % coinValues[i];
+    }
+  }
+
+  return bills;
+
 };
 
 console.log(calculateChange(1787, 2000));
